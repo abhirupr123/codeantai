@@ -87,6 +87,7 @@ const Repositories = () => {
                     </div>      
                 </div>
             </div>
+            {drawer && <div className="overlay" onClick={() => drawerToggle(false)}></div>}
             {drawer && (
                     <div className={`drawer ${drawer ? "open" : ""}`}>
                         <img src={drop}/>
