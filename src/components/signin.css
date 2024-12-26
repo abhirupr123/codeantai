@@ -124,7 +124,7 @@
     color: #181D27;
 }
 
-.frame{
+.frameland{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -211,7 +211,7 @@
     overflow-x: hidden;
   }
 
-  .frame {
+  .frameland {
     padding: 16px;
     width: 100%;
     max-width: 100vw;

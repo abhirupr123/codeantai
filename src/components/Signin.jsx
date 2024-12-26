@@ -16,7 +16,7 @@ const Signin = () => {
         <img src={info}/>
         <img src={side}/>
       </div>
-      <div className='frame'>
+      <div className="frameland">
         <div className='textframe'>
           <div className='text'>
             <div className='intro'>

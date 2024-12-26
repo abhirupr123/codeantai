@@ -13,10 +13,14 @@ import refresh from '../assets/refresh.svg'
 import add from '../assets/add.svg'
 import search from '../assets/search.svg'
 import Repos from './Repos'
+import bars from '../assets/bars.svg'
+import close from '../assets/close.svg'
+import drop from '../assets/dropdownmobile.svg'
 
 const Repositories = () => {
 
     const [selected, selecttab] = useState(0)
+    const[drawer, drawerToggle] = useState(false)
     const navItems = [
         { id: 1, navtext: "Repositories", icon: home },
         { id: 2, navtext: "AI Code Review", icon: code },
@@ -44,6 +48,14 @@ const Repositories = () => {
                     </div>
                     <div className="dropdown">
                         <img src={dropdown}/>
+                    </div>
+                    <div className="drawerbutton">
+                        {(drawer===false) && (
+                            <img src={bars} onClick={()=>(drawerToggle(true))}/>
+                        )}
+                        {(drawer===true) && (
+                            <img src={close} onClick={()=>(drawerToggle(false))}/>                            
+                        )}
                     </div>
                 </div>
                 <div className="sidenavigation">
@@ -75,6 +87,41 @@ const Repositories = () => {
                     </div>      
                 </div>
             </div>
+            {drawer && (
+                    <div className={`drawer ${drawer ? "open" : ""}`}>
+                        <img src={drop}/>
+                        <div className="sidenavmobile">
+                            {navItems.map((items, index)=>(
+                                <div key={items.id} className="navitem"
+                                onClick={()=>{selecttab(index)}}>
+                                    {selected===index? (
+                                        <div className="navcontent">
+                                            <img src={items.icon}/>
+                                            <div className="navtext">{items.navtext}</div>
+                                        </div>
+                                    ):(
+                                        <div className="navnot">
+                                            <img src={items.icon}/>
+                                            <div className="navnotselected">{items.navtext}</div>
+                                        </div>
+                                    )}
+                                </div>    
+                            ))}
+                            <div className="navitem">
+                                <div className="navnot">
+                                    <img src={support}/>
+                                    <div className="navnotselected">Support</div>
+                                </div>
+                            </div>
+                            <div className="navitem">
+                                <div className="navnot">
+                                    <img src={logout}/>
+                                    <div className="navnotselected">Logout</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                    )}
         </div>
         <div className="mainframe">
             <div className="maincontent">
